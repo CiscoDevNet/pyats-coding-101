@@ -28,7 +28,7 @@ from metaparser.util.schemaengine import Schema, Any, Optional, Or
 
 
 class ParserSchema(MetaParser):
-	# Schema could be any valid python datastructure/callable.
+    # Schema could be any valid python datastructure/callable.
     Schema = {
         'vrf':
             {Any():
