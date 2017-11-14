@@ -1,0 +1,65 @@
+
+--- # movie release
+
+movie: Spectre
+date: 2015-11-06
+director: Sam Mendes
+writers:
+    - Ian Fleming
+    - John Logan
+    - Neal Purvis
+    - Robert Wade
+    - Jez Butterworth
+
+ratings:
+    rotten_tomatos: 63%
+    imdb: 75%
+
+cast:
+    - character: James Bond
+      starred_by: Daniel Craig
+
+    - character: Oberhauser
+      starred_by: Christoph Waltz
+
+    - character: Madeleine Swann
+      starred_by: Lea Seydoux
+
+    - character: M
+      starred_by: Ralph Fienne
+
+    - character: Q
+      starred_by: Ben Whishaw
+
+    - character: Moneypenny
+      starred_by: Naomie Harris
+
+storyline: >
+    A cryptic message from the past sends James Bond on a rogue mission to 
+    Mexico City and eventually Rome, where he meets Lucia, the beautiful and 
+    forbidden widow of an infamous criminal. Bond infiltrates a secret meeting 
+    and uncovers the existence of the sinister organisation known as SPECTRE. 
+    Meanwhile back in London, Max Denbigh, the new head of the Centre of 
+    National Security, questions Bond's actions and challenges the relevance of
+    MI6 led by M. Bond covertly enlists Moneypenny and Q to help him seek 
+    out Madeleine Swann, the daughter of his old nemesis Mr White, who may
+    hold the clue to untangling the web of SPECTRE. As the daughter of 
+    the assassin, she understands Bond in a way most others cannot. As Bond 
+    ventures towards the heart of SPECTRE, he learns a chilling connection 
+    between himself and the enemy he seeks.
+
+quotes: |
+    Oberhauser: Why did you come?
+    James Bond: I came here to kill you.
+    Oberhauser: And I thought you came here to die.
+    James Bond: Well, it's all a matter of perspective.
+    -------
+    Lucia Sciarra: If you don't leave now, we'll die together.
+    James Bond: I can think of worse ways to go.
+    Lucia Sciarra: Then you're obviously crazy, Mr...
+    James Bond: Bond. James Bond.
+    -------
+
+keywords: [spy, espionage, sequel, sinister]
+
+genres: [action, adventure, thriller]

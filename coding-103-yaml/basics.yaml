@@ -1,0 +1,51 @@
+# YAML Basic Syntax
+# -----------------
+#
+#   YAML syntax is white-space sensitive.
+
+# comments in YAML starts with hashtag
+# like this
+
+# typical structure:
+#   key: value
+
+# scalar variables
+integer: 42
+string: "this is a string"
+float: 3.14
+boolean: true
+
+# lists can be defined using "-" on each newline
+books:
+  - "Les Miserable"
+  - "Pride & Prejudice"
+
+# or within []
+names: ["John", "Joe", "Josh"]
+
+# mappings/dictionary
+character:
+  callsign: blackwidow
+  role: melee
+  name: "natasha romanoff"
+  skills:
+    - "tactician"
+    - "martial artist"
+    - "marksman"
+
+# mapping/dictionary type can also be represented using {}
+character: {callsign: blackwidow, role: melee}
+
+# long strings, use | to preserve newlines and spaces
+long_string_with_newlines: |
+  text in here will
+  appear as it is typed
+  and the newlines will be preserved,
+  just like a haiku
+
+long_one_liner_string: >
+  this is a very long string where,
+  no matter how many lines I put it over,
+  it will print out to be a single line,
+  because with >, newlines are not 
+  preserved.
