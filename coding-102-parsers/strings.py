@@ -9,6 +9,8 @@ Parsing Strings
 '''
 
 import re
+import pprint
+
 
 STRING = '''
  Neighbor: 21.0.0.1, Address-Family: ipv4 Unicast (VRF1)
@@ -29,13 +31,11 @@ STRING = '''
     route-map RMAP8 out
     '''
 
-out = STRING
-
 # initialize dictionary
 PYTHON_DICT = {}
 
 # split the output into seperate lines
-for line in out.splitlines():
+for line in STRING.splitlines():
     # strip the line from any trailing white spaces
     line = line.rstrip()
 
@@ -102,49 +102,52 @@ for line in out.splitlines():
         continue
 
 # print the parsed built structure
-print (PYTHON_DICT)
+pprint.pprint(PYTHON_DICT)
 
-PYTHON_DICT = {
-    'vrf':
-        {'VRF1':
-            {'neighbor':
-                {'21.0.0.1':
-                    {'address_family':
-                        {'VPNv4 Unicast':
-                            {'route_map_in': 'RMAP',
-                             'route_map_out': 'RMAP2'}
-                        }
-                    }
-                }
-            },
-        'VRF2':
-            {'neighbor':
-                {'21.0.0.2':
-                    {'address_family':
-                        {'VPNv6 Unicast':
-                            {'route_map_in': 'RMAP3',
-                             'route_map_out': 'RMAP4'}
-                        }
-                    },
-                '21.0.0.4':
-                    {'address_family':
-                        {'VPNv6 Unicast':
-                            {'route_map_in': 'RMAP7',
-                             'route_map_out': 'RMAP8'}
-                        }
-                    }
-                }
-            },
-        'default':
-            {'neighbor':
-                {'21.0.0.3':
-                    {'address_family':
-                        {'VPNv4 Unicast':
-                            {'route_map_in': 'RMAP5',
-                             'route_map_out': 'RMAP6'}
-                        }
-                    }
-                }
-            }
-        }
-    }
+# Expected output
+# ===============
+
+# PYTHON_DICT = {
+#     'vrf':
+#         {'VRF1':
+#             {'neighbor':
+#                 {'21.0.0.1':
+#                     {'address_family':
+#                         {'VPNv4 Unicast':
+#                             {'route_map_in': 'RMAP',
+#                              'route_map_out': 'RMAP2'}
+#                         }
+#                     }
+#                 }
+#             },
+#         'VRF2':
+#             {'neighbor':
+#                 {'21.0.0.2':
+#                     {'address_family':
+#                         {'VPNv6 Unicast':
+#                             {'route_map_in': 'RMAP3',
+#                              'route_map_out': 'RMAP4'}
+#                         }
+#                     },
+#                 '21.0.0.4':
+#                     {'address_family':
+#                         {'VPNv6 Unicast':
+#                             {'route_map_in': 'RMAP7',
+#                              'route_map_out': 'RMAP8'}
+#                         }
+#                     }
+#                 }
+#             },
+#         'default':
+#             {'neighbor':
+#                 {'21.0.0.3':
+#                     {'address_family':
+#                         {'VPNv4 Unicast':
+#                             {'route_map_in': 'RMAP5',
+#                              'route_map_out': 'RMAP6'}
+#                         }
+#                     }
+#                 }
+#             }
+#         }
+#     }
