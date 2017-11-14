@@ -12,3 +12,5 @@ The goal of this repository is to demonstrate fundamental skillsets related to:
   - etc
 
 The content of this repository extends [Cisco DevNet - Coding Skills](https://github.com/CiscoDevNet/coding-skills-sample-code). 
+
+*Note: Python-3 syntax, tested with Python 3.4+*
