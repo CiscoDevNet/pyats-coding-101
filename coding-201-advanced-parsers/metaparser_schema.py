@@ -6,8 +6,8 @@ Metaparser
    parsing contexts. It provides a unified structure that will be followed
    by different device connections (Ex: 'cli', 'yang', 'xml).
 
-   It addresses the common automation problems as:
-   -----------------------------------------------
+   It addresses the common automation problems such as:
+   ----------------------------------------------------
 
    * Script changes due to CLI command and/or output changes
      (release to release, OS to OS,  Platform/Series to Platform/Series) 
@@ -15,8 +15,11 @@ Metaparser
 
 '''
 
+# Python
 import re
 import pprint
+
+# Metaparser
 from metaparser import MetaParser
 # Schema is the user datastructure that every output from the inheriting class
 # should comply with.
@@ -29,7 +32,7 @@ from metaparser.util.schemaengine import Schema, Any, Optional, Or
 
 class ParserSchema(MetaParser):
     # Schema could be any valid python datastructure/callable.
-    Schema = {
+    schema = {
         'vrf':
             {Any():
                 {'neighbor':
@@ -75,7 +78,7 @@ class Parser(ParserSchema):
     def cli(self):
 
         # Initialize dictionary
-        PYTHON_DICT = {}
+        result = {}
 
         # split the output into seperate lines
         for line in self.STRING.splitlines():
@@ -116,42 +119,49 @@ class Parser(ParserSchema):
                 direction = m.groupdict()['direction']
 
                 # build the desired structure/hierarchy out of the parsed output
-                if 'vrf' not in PYTHON_DICT:
-                    PYTHON_DICT['vrf'] = {}
-                if vrf_name not in PYTHON_DICT['vrf']:
-                    PYTHON_DICT['vrf'][vrf_name] = {}
-                if 'neighbor' not in PYTHON_DICT['vrf'][vrf_name]:
-                    PYTHON_DICT['vrf'][vrf_name]['neighbor'] = {}
-                if neighbor_name not in PYTHON_DICT['vrf'][vrf_name]\
+                if 'vrf' not in result:
+                    result['vrf'] = {}
+                if vrf_name not in result['vrf']:
+                    result['vrf'][vrf_name] = {}
+                if 'neighbor' not in result['vrf'][vrf_name]:
+                    result['vrf'][vrf_name]['neighbor'] = {}
+                if neighbor_name not in result['vrf'][vrf_name]\
                     ['neighbor']:
-                    PYTHON_DICT['vrf'][vrf_name]['neighbor'][neighbor_name] = {}
-                if 'address_family' not in PYTHON_DICT['vrf'][vrf_name]\
+                    result['vrf'][vrf_name]['neighbor'][neighbor_name] = {}
+                if 'address_family' not in result['vrf'][vrf_name]\
                     ['neighbor'][neighbor_name]:
-                    PYTHON_DICT['vrf'][vrf_name]['neighbor'][neighbor_name]\
+                    result['vrf'][vrf_name]['neighbor'][neighbor_name]\
                         ['address_family'] = {}
-                if address_family_name not in PYTHON_DICT['vrf'][vrf_name]\
+                if address_family_name not in result['vrf'][vrf_name]\
                     ['neighbor'][neighbor_name]['address_family']:
-                    PYTHON_DICT['vrf'][vrf_name]['neighbor'][neighbor_name]\
+                    result['vrf'][vrf_name]['neighbor'][neighbor_name]\
                         ['address_family'][address_family_name] = {}
 
                 if direction == 'in':
-                    PYTHON_DICT['vrf'][vrf_name]['neighbor'][neighbor_name]\
+                    result['vrf'][vrf_name]['neighbor'][neighbor_name]\
                         ['address_family'][address_family_name]\
                             ['route_map_in'] = route_map_name
                 else:
-                    PYTHON_DICT['vrf'][vrf_name]['neighbor'][neighbor_name]\
+                    result['vrf'][vrf_name]['neighbor'][neighbor_name]\
                         ['address_family'][address_family_name]\
                             ['route_map_out'] = route_map_name
 
                 continue
 
         # print the parsed built structure
-        pprint.pprint(PYTHON_DICT)
+        pprint.pprint(result)
 
-# Expected output
-# ===============
 
-# PYTHON_DICT = {
+# Instantiate the parser class to run it
+My_object = Parser(device=None)
+
+# Call the cli function of the class to print the parsed output
+My_object.cli()
+
+
+# Parsed Output
+# =============
+# result = {
 #     'vrf':
 #         {'VRF1':
 #             {'neighbor':
